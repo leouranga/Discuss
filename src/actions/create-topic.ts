@@ -22,5 +22,5 @@ export async function createTopic(formData: FormData) {
     console.log(result.error.flatten().fieldErrors);
   }
 
-  //TODO: revalidade the homepage
+  //TODO: revalidade the homepage.
 }
