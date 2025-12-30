@@ -1,7 +1,6 @@
 "use client";
 
 import { useActionState, startTransition } from "react";
-
 import {
   Input,
   Button,
@@ -28,33 +27,48 @@ export default function TopicCreateForm() {
   }
 
   return (
-    <Popover placement="left">
+    <Popover placement="left" showArrow>
       <PopoverTrigger>
-        <Button color="primary">Create a Topic</Button>
+        <Button color="primary" variant="shadow" radius="full">
+          Create a Topic
+        </Button>
       </PopoverTrigger>
-      <PopoverContent>
-        <Form onSubmit={handleSubmit}>
-          <div className="flex flex-col gap-4 p-4 w-80">
-            <h3 className="text-lg">Create a Topic</h3>
+      <PopoverContent className="border border-black/10 bg-white/80 backdrop-blur dark:border-white/10 dark:bg-zinc-950/60">
+        <Form onSubmit={handleSubmit} className="w-full">
+          <div className="flex w-80 flex-col gap-4 p-5">
+            <div>
+              <h3 className="text-lg font-semibold tracking-tight">
+                Create a topic
+              </h3>
+              <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                Topics keep your posts organized.
+              </p>
+            </div>
+
             <Input
               name="name"
               label="Name"
               labelPlacement="outside"
-              placeholder="Name"
+              placeholder="e.g. react, devops, career"
+              variant="bordered"
+              radius="lg"
               isInvalid={!!formState.errors.name}
               errorMessage={formState.errors.name?.join(", ")}
             />
+
             <Textarea
               name="description"
               label="Description"
               labelPlacement="outside"
-              placeholder="Describe your topic"
+              placeholder="What is this topic about?"
+              variant="bordered"
+              radius="lg"
               isInvalid={!!formState.errors.description}
               errorMessage={formState.errors.description?.join(", ")}
             />
 
             {formState.errors._form ? (
-              <div className="rounded p-2 bg-red-200 border border-red-400">
+              <div className="rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-700">
                 {formState.errors._form?.join(", ")}
               </div>
             ) : null}

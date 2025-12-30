@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, startTransition, useState } from "react";
 import {
   Input,
   Button,
@@ -8,6 +8,7 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
+  Form,
 } from "@nextui-org/react";
 import * as actions from "@/actions";
 import FormButton from "@/components/common/form-button";
@@ -17,49 +18,88 @@ interface PostCreateFormProps {
 }
 
 export default function PostCreateForm({ slug }: PostCreateFormProps) {
-  const [formState, action, isPending] = useActionState(
-    actions.createPost.bind(null, slug),
-    {
-      errors: {},
-    }
-  );
+  const [isOpen, setIsOpen] = useState(false);
+  const [formInstance, setFormInstance] = useState(0);
 
   return (
-    <Popover placement="left">
+    <Popover
+      placement="left"
+      showArrow
+      isOpen={isOpen}
+      onOpenChange={(open) => {
+        setIsOpen(open);
+        if (open) setFormInstance((v) => v + 1); // remount each time you open
+      }}
+    >
       <PopoverTrigger>
-        <Button color="primary">Create a Post</Button>
+        <Button color="primary" variant="shadow" radius="full">
+          Create a Post
+        </Button>
       </PopoverTrigger>
-      <PopoverContent>
-        <form action={action}>
-          <div className="flex flex-col gap-4 p-4 w-80">
-            <h3 className="text-lg">Create a Post</h3>
-            <Input
-              isInvalid={!!formState.errors.title}
-              errorMessage={formState.errors.title?.join(", ")}
-              name="title"
-              label="Title"
-              labelPlacement="outside"
-              placeholder="Title"
-            />
-            <Textarea
-              isInvalid={!!formState.errors.content}
-              errorMessage={formState.errors.content?.join(", ")}
-              name="content"
-              label="Content"
-              labelPlacement="outside"
-              placeholder="Content"
-            />
 
-            {formState.errors._form ? (
-              <div className="rounded p-2 bg-red-200 border border-red-400">
-                {formState.errors._form.join(",")}
-              </div>
-            ) : null}
-
-            <FormButton isLoading={isPending}>Create Post</FormButton>
-          </div>
-        </form>
+      <PopoverContent className="border border-black/10 bg-white/80 backdrop-blur dark:border-white/10 dark:bg-zinc-950/60">
+        <PostCreateInner key={formInstance} slug={slug} />
       </PopoverContent>
     </Popover>
+  );
+}
+
+function PostCreateInner({ slug }: { slug: string }) {
+  const [formState, action, isPending] = useActionState(
+    actions.createPost.bind(null, slug),
+    { errors: {} }
+  );
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    startTransition(() => {
+      action(formData);
+    });
+  }
+
+  return (
+    <Form onSubmit={handleSubmit} className="w-full">
+      <div className="flex w-80 flex-col gap-4 p-5">
+        <div>
+          <h3 className="text-lg font-semibold tracking-tight">
+            Create a post
+          </h3>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+            Share your idea with the community.
+          </p>
+        </div>
+
+        <Input
+          name="title"
+          label="Title"
+          labelPlacement="outside"
+          placeholder="Short and specific"
+          variant="bordered"
+          radius="lg"
+          isInvalid={!!formState.errors.title?.length}
+          errorMessage={formState.errors.title?.join(", ")}
+        />
+
+        <Textarea
+          name="content"
+          label="Content"
+          labelPlacement="outside"
+          placeholder="Write your post..."
+          variant="bordered"
+          radius="lg"
+          isInvalid={!!formState.errors.content?.length}
+          errorMessage={formState.errors.content?.join(", ")}
+        />
+
+        {formState.errors._form?.length ? (
+          <div className="rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-700">
+            {formState.errors._form.join(", ")}
+          </div>
+        ) : null}
+
+        <FormButton isLoading={isPending}>Create Post</FormButton>
+      </div>
+    </Form>
   );
 }
