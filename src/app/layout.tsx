@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Discuss",
-  description: "A minimal forum with a premium UI.",
+  description: "A minimal forum.",
 };
 
 export default function RootLayout({
