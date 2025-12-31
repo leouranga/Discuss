@@ -25,7 +25,7 @@ export default async function TopicList() {
         <Link
           key={topic.id}
           href={paths.topicShow(topic.slug)}
-          className="surface surface-hover block p-4"
+          className="surface surface-hover block p-3 sm:p-4"
         >
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
@@ -35,12 +35,12 @@ export default async function TopicList() {
                 </span>
                 {topic.slug}
               </p>
-              <p className="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <p className="mt-1 clamp-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
                 {topic.description}
               </p>
             </div>
 
-            <div className="shrink-0 rounded-full border border-black/10 bg-white/60 px-3 py-1 text-xs text-zinc-600 shadow-sm backdrop-blur dark:border-white/10 dark:bg-zinc-950/30 dark:text-zinc-300">
+            <div className="shrink-0 rounded-full border border-black/10 bg-white/60 px-2.5 py-1 text-[11px] text-zinc-600 shadow-sm backdrop-blur dark:border-white/10 dark:bg-zinc-950/30 dark:text-zinc-300">
               {topic._count.posts} post{topic._count.posts === 1 ? "" : "s"}
             </div>
           </div>

@@ -40,7 +40,7 @@ export default async function PostList({ fetchData }: PostListProps) {
           <Link
             key={post.id}
             href={paths.postShow(topicSlug, post.id)}
-            className="surface surface-hover group relative block overflow-hidden p-4 sm:p-5"
+            className="surface surface-hover group relative block overflow-hidden p-3 sm:p-5"
           >
             <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-sky-500/30 via-violet-500/25 to-emerald-500/25 opacity-0 transition-opacity group-hover:opacity-100" />
 
@@ -62,11 +62,11 @@ export default async function PostList({ fetchData }: PostListProps) {
                   </span>
                 </div>
 
-                <h3 className="truncate text-base font-semibold tracking-tight text-zinc-900 group-hover:underline dark:text-zinc-50">
+                <h3 className="truncate text-sm font-semibold tracking-tight text-zinc-900 group-hover:underline dark:text-zinc-50 sm:text-base">
                   {post.title}
                 </h3>
 
-                <p className="mt-2 line-clamp-none text-sm text-zinc-600 dark:text-zinc-400">
+                <p className="mt-2 clamp-3 break-words text-xs leading-relaxed text-zinc-600 dark:text-zinc-400 sm:text-sm">
                   {preview}
                 </p>
 

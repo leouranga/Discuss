@@ -67,17 +67,17 @@ export default async function Home() {
           <div className="surface p-4 sm:p-5">
             <h3 className="text-lg font-semibold tracking-tight">Shortcuts</h3>
             <Divider className="my-3 sm:my-4" />
-            <ul className="space-y-2 text-sm text-zinc-700 dark:text-zinc-300">
+            <ul className="space-y-1.5 text-xs text-zinc-700 dark:text-zinc-300 sm:space-y-2 sm:text-sm">
               <li className="flex gap-2">
-                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600" />
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600 sm:mt-2" />
                 Search by title or content using the header search bar.
               </li>
               <li className="flex gap-2">
-                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600" />
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600 sm:mt-2" />
                 Keep titles short and specific.
               </li>
               <li className="flex gap-2">
-                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600" />
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600 sm:mt-2" />
                 Reply directly to build threads.
               </li>
             </ul>

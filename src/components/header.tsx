@@ -25,7 +25,6 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Mobile: search goes on its own row to prevent overflow */}
           <div className="mt-3">
             <Suspense>
               <SearchInput />
