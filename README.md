@@ -32,7 +32,7 @@ Authentication is handled via GitHub OAuth (Auth.js / NextAuth v5), and all data
 ## 3. Requirements
 
 - **Node.js**: 20.9+ (recommended for modern Next.js versions)
-- **Postgres**: local (Docker or native install) or hosted (Vercel Postgres, Neon, Supabase, etc)
+- **Postgres**: local (Docker or native install) or hosted (Vercel Postgres, Neon, Supabase, etc.)
 - A **GitHub OAuth App** for authentication (Client ID + Client Secret)
 
 ---
