@@ -100,7 +100,7 @@ AUTH_URL="http://localhost:3000"
 
 ## 6. Key Dependencies
 
-Backend / Full-stack:
+Backend:
 
 - `next`
 - `prisma`, `@prisma/client`
