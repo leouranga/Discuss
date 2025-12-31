@@ -11,7 +11,7 @@ export default async function PostList({ fetchData }: PostListProps) {
 
   if (posts.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-black/15 bg-white/50 p-8 text-center dark:border-white/15 dark:bg-zinc-900/25">
+      <div className="rounded-2xl border border-dashed border-black/15 bg-white/50 p-6 text-center sm:p-8 dark:border-white/15 dark:bg-zinc-900/25">
         <p className="text-sm font-medium">Nothing here yet</p>
         <p className="muted mt-1">Be the first to create a post.</p>
       </div>
@@ -40,7 +40,7 @@ export default async function PostList({ fetchData }: PostListProps) {
           <Link
             key={post.id}
             href={paths.postShow(topicSlug, post.id)}
-            className="surface surface-hover group relative block overflow-hidden p-5"
+            className="surface surface-hover group relative block overflow-hidden p-4 sm:p-5"
           >
             <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-sky-500/30 via-violet-500/25 to-emerald-500/25 opacity-0 transition-opacity group-hover:opacity-100" />
 

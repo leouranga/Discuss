@@ -1,6 +1,5 @@
 "use client";
 import {
-  NavbarItem,
   Button,
   Avatar,
   Popover,
@@ -19,11 +18,12 @@ export default function HeaderAuth() {
     authContent = null;
   } else if (session.data?.user) {
     authContent = (
-      <Popover placement="left">
+      <Popover placement="bottom-end">
         <PopoverTrigger>
           <Avatar
             src={session.data.user.image || ""}
             name={session.data.user.name || "User"}
+            size="sm"
             className="cursor-pointer ring-1 ring-black/10 dark:ring-white/10"
           />
         </PopoverTrigger>
@@ -46,27 +46,33 @@ export default function HeaderAuth() {
     );
   } else {
     authContent = (
-      <>
-        <NavbarItem>
-          <form action={actions.signIn}>
-            <Button
-              type="submit"
-              color="secondary"
-              variant="bordered"
-              className="border-black/10 bg-white/60 dark:border-white/10 dark:bg-zinc-950/30"
-            >
-              Sign In
-            </Button>
-          </form>
-        </NavbarItem>
-        <NavbarItem>
-          <form action={actions.signIn}>
-            <Button type="submit" color="primary" variant="shadow">
-              Sign Up
-            </Button>
-          </form>
-        </NavbarItem>
-      </>
+      <div className="flex items-center gap-2">
+        <form action={actions.signIn}>
+          <Button
+            type="submit"
+            size="sm"
+            radius="full"
+            color="secondary"
+            variant="bordered"
+            className="border-black/10 bg-white/60 px-3 dark:border-white/10 dark:bg-zinc-950/30"
+          >
+            Sign In
+          </Button>
+        </form>
+
+        <form action={actions.signIn}>
+          <Button
+            type="submit"
+            size="sm"
+            radius="full"
+            color="primary"
+            variant="shadow"
+            className="px-3"
+          >
+            Sign Up
+          </Button>
+        </form>
+      </div>
     );
   }
 

@@ -26,7 +26,7 @@ export default function SearchInput() {
   const searchParams = useSearchParams();
 
   return (
-    <form action={actions.search}>
+    <form action={actions.search} className="flex w-full justify-center">
       <Input
         name="term"
         defaultValue={searchParams.get("term") || ""}
@@ -35,7 +35,7 @@ export default function SearchInput() {
         radius="full"
         variant="bordered"
         startContent={<SearchIcon />}
-        className="w-[min(560px,70vw)]"
+        className="w-full sm:max-w-[560px]"
         classNames={{
           inputWrapper:
             "bg-white/70 shadow-sm border-black/10 backdrop-blur hover:bg-white/80 dark:bg-zinc-900/35 dark:border-white/10 dark:hover:bg-zinc-900/50",

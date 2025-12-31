@@ -19,7 +19,7 @@ export default async function TopicShowPage({ params }: TopicShowPageProps) {
 
   return (
     <div className="space-y-6">
-      <section className="surface p-6">
+      <section className="surface p-4 sm:p-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">
@@ -28,7 +28,8 @@ export default async function TopicShowPage({ params }: TopicShowPageProps) {
                 •
               </span>
               <span className="rounded-full border border-black/10 bg-white/60 px-3 py-1 text-xs text-zinc-600 shadow-sm backdrop-blur dark:border-white/10 dark:bg-zinc-950/30 dark:text-zinc-300">
-                {topic?._count.posts ?? 0} post{(topic?._count.posts ?? 0) === 1 ? "" : "s"}
+                {topic?._count.posts ?? 0} post
+                {(topic?._count.posts ?? 0) === 1 ? "" : "s"}
               </span>
             </div>
 
@@ -41,13 +42,13 @@ export default async function TopicShowPage({ params }: TopicShowPageProps) {
             ) : null}
           </div>
 
-          <div>
+          <div className="w-full sm:w-auto">
             <PostCreateForm slug={slug} />
           </div>
         </div>
       </section>
 
-      <section className="surface p-5">
+      <section className="surface p-4 sm:p-5">
         <PostList fetchData={() => fetchPostByTopicSlug(slug)} />
       </section>
     </div>

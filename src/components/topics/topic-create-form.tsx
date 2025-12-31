@@ -27,15 +27,15 @@ export default function TopicCreateForm() {
   }
 
   return (
-    <Popover placement="left" showArrow>
+    <Popover placement="bottom" showArrow>
       <PopoverTrigger>
-        <Button color="primary" variant="shadow" radius="full">
+        <Button color="primary" variant="shadow" radius="full" className="w-full sm:w-auto">
           Create a Topic
         </Button>
       </PopoverTrigger>
       <PopoverContent className="border border-black/10 bg-white/80 backdrop-blur dark:border-white/10 dark:bg-zinc-950/60">
         <Form onSubmit={handleSubmit} className="w-full">
-          <div className="flex w-80 flex-col gap-4 p-5">
+          <div className="flex w-[min(92vw,20rem)] flex-col gap-4 p-5">
             <div>
               <h3 className="text-lg font-semibold tracking-tight">
                 Create a topic

@@ -34,7 +34,7 @@ export default function RootLayout({
           <div className="app-container">
             <Header />
           </div>
-          <main className="app-container pb-12 pt-6">
+          <main className="app-container pb-10 pt-4 sm:pb-12 sm:pt-6">
             <PageTransition>{children}</PageTransition>
           </main>
         </Providers>

@@ -23,7 +23,7 @@ export default function PostCreateForm({ slug }: PostCreateFormProps) {
 
   return (
     <Popover
-      placement="left"
+      placement="bottom"
       showArrow
       isOpen={isOpen}
       onOpenChange={(open) => {
@@ -32,7 +32,12 @@ export default function PostCreateForm({ slug }: PostCreateFormProps) {
       }}
     >
       <PopoverTrigger>
-        <Button color="primary" variant="shadow" radius="full">
+        <Button
+          color="primary"
+          variant="shadow"
+          radius="full"
+          className="w-full sm:w-auto"
+        >
           Create a Post
         </Button>
       </PopoverTrigger>
@@ -60,7 +65,7 @@ function PostCreateInner({ slug }: { slug: string }) {
 
   return (
     <Form onSubmit={handleSubmit} className="w-full">
-      <div className="flex w-80 flex-col gap-4 p-5">
+      <div className="flex w-[min(92vw,20rem)] flex-col gap-4 p-5">
         <div>
           <h3 className="text-lg font-semibold tracking-tight">
             Create a post
